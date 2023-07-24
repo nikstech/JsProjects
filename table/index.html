@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <form action="" id="myForm">
+      <input type="text" placeholder="Name" name="name" id="name" />
+      <input type="email" placeholder="Email" name="email" id="email" />
+      <input type="text" placeholder="Mbl" name="mobile" id="mbl" />
+      <select name="city" id="city">
+        <option value="">Select City</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Surat">Surat</option>
+      </select>
+      <button>Submit</button>
+    </form>
+    <table id="table" border="1"></table>
+
+    <script>
+      let name = document.querySelector("#name");
+      let email = document.querySelector("#email");
+      let mbl = document.querySelector("#mbl");
+      let city = document.querySelector("#city");
+      let table = document.querySelector("#table");
+      let myForm = document.querySelector("#myForm");
+      let arr = [];
+
+      myForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const obj = {
+          name: name.value,
+          email: email.value,
+          mbl: mbl.value,
+          city: city.value,
+        };
+        arr.push(obj);
+        getValue(arr);
+        name.value = "";
+        email.value = "";
+        mbl.value = "";
+        city.value = "";
+      });
+      function getValue(rows) {
+        document.querySelector("#table").innerHTML = rows
+          .map(
+            (row) =>
+              `<tr>
+                <td>${row.name}</td>
+                <td>${row.email}</td>
+                <td>${row.mbl}</td>
+                <td>${row.city}</td>
+              </tr>`
+          )
+          .join("");
+      }
+    </script>
+    <!--   -->
+  </body>
+</html>

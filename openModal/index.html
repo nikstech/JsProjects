@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="abc div1">
+        <h1>Hello</h1>
+        <div>
+            <h1>Rahul Kumar</h1>
+        </div>
+    </div>
+    <div class="abc div2">
+        gjjgm
+        <h1>word</h1>
+        <div>
+            <h1>ddsfdefd</h1>
+        </div>
+    </div>
+    <button id="btnModal">Open Modal</button>
+    <div class="modalBox">Modal Item <button class="btnClose">*</button></div>
+    <!-- <input type="text" id="inp" value="">
+    <p id="vPara"></p> -->
+
+    <!-- <input type="text" id="from" value="" /> <button id="btnSwap">Swap</button> <input type="text" id="to" value="" /> -->
+
+    <ul id="ulList"></ul>
+    <script>
+        // let data = document.querySelectorAll('.abc')[1]
+        // console.log(data.remove(data.innerText))
+        // console.log(data.removeChild(data.children[1]))
+        // let data2 = data.childNodes[0]
+        // console.log(data2.nodeValue)
+        // console.log(data.children[1].innerText)
+        // let newEle = document.createElement('p')
+        // newEle.textContent = 'I am new para'
+        // newEle.setAttribute('title','test')
+        // data.appendChild(newEle);
+        // console.log(data)
+
+        // let inputEle = document.getElementById('inp')
+        // let para = document.getElementById('vPara')
+
+        // setTimeout(()=>{
+        //     inputEle = inputEle.value
+        //     para.innerHTML = inputEle
+        //     // console.log(para)
+        //     // inputEle.setAttribute("disabled")
+        // },5000)
+
+        // let from = document.getElementById('from');
+        // let to = document.getElementById('to');
+        // let btnS = document.getElementById('btnSwap')
+        // btnS.addEventListener('click', () => {
+        //     // [val1.value,val2.value] = [val2.value,val1.value]
+        //     temp = from.value;
+        //     from.value = to.value
+        //     to.value = temp
+        // })
+
+        // let arr = [
+        //     {name: "Nik", title: "Sw"},
+        //     {name: "Ashu", title: "typer"}
+        // ]
+        // let list2 = arr.map((ar) => {
+        //     return `<li>${ar.name}(${ar.title})</li>`;
+        // })
+
+        // let list = document.getElementById('ulList')
+        // list.innerHTML = list2.join(" ")
+
+
+        let btnModal = document.getElementById('btnModal')
+        let modal = document.querySelector('.modalBox')
+        let modalClose = document.querySelector('.btnClose')
+        btnModal.addEventListener('click', () => {
+            console.log(modal)
+            modal.classList.add('show')
+            
+            // .add('.show')
+        })
+        modalClose.addEventListener('click',()=>{
+            modal.classList.remove('show')
+        })
+
+    </script>
+</body>
+<style>
+    .modalBox {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        padding: 5px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-name: ani;
+
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .btnClose {
+        position: absolute;
+        right: 0;
+    }
+
+    @keyframes ani {
+            from {transform: scale(0.2);}
+            to {transform: scale(1);}
+    }
+</style>
+
+</html>

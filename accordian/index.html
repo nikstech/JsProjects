@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: content-box
+        }
+
+        body {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .title {
+            padding: 10px;
+            background-color: lightgrey;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: grey;
+        }
+
+        .content {
+            max-height: 0;
+            background-color: red;
+            overflow: hidden;
+            width: 100%;
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+<div class="accordian">
+    <div class="title">Title 1</div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam unde a, nihil odit doloremque
+        eius accusamus veniam exercitationem sint ducimus sequi molestiae fugiat eveniet modi ab iste quo expedita hic.
+    </div>
+    <div class="title">Title 2</div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam unde a, nihil odit doloremque
+        eius accusamus veniam exercitationem sint ducimus sequi molestiae fugiat eveniet modi ab iste quo expedita hic.
+    </div>
+    <div class="title">Title 3</div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam unde a, nihil odit doloremque
+        eius accusamus veniam exercitationem sint ducimus sequi molestiae fugiat eveniet modi ab iste quo expedita hic.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, qui omnis inventore dolore corrupti
+        maiores perferendis vel provident quae! Magnam voluptatem ut quo omnis corrupti eaque itaque quaerat
+        consequuntur ipsam.
+    </div>
+    <div class="title">Title 4</div>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam unde a, nihil odit doloremque
+        eius accusamus veniam exercitationem sint ducimus sequi molestiae fugiat eveniet modi ab iste quo expedita hic.
+    </div>
+</div>
+
+<body>
+    <script>
+        let current;
+        let title = document.querySelectorAll('.title')
+        let contentEle = document.querySelectorAll('.content')
+        title.forEach((el, id) => {
+            el.addEventListener('click', function () {
+                this.classList.toggle('active')
+                let content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = ''
+                }
+                else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    try {
+                        contentEle[current].style.maxHeight = ''
+                        console.log(title[current])
+                        title[current].classList.toggle('active')
+                        current = id;
+                    }
+                    catch (err) {
+                        current = id;
+                    }
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>
+
+<!-- 
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="text" value="" />
+        <input type="text" value="" />
+        <script>
+            function ShowResults(value, index, ar) {
+                alert(index);
+            }
+            var input = document.getElementsByTagName("input");
+            var inputList = Array.prototype.slice.call(input);
+            alert(inputList.length);
+            inputList.forEach(ShowResults);
+    </script>
+    </body>
+</html> -->
