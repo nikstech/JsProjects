@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="margin:50px;">
+    <input type="text" id="input" value="">
+    <table border="1" id="table">
+        <thead>
+            <th>Name</th>
+            <th>Emai</th>
+        </thead>
+    </table>
+    <script>
+        (function () {
+            let arr = [
+                {name: "niklesh", email: "nik@y.com"},
+                {name: "ashu", email: "ashu@g.com"},
+                {name: "pinky", email: "pinky@y.com"},
+                {name: "rahul", email: "rahul@y.com"},
+                {name: "ritu", email: "ratuky@y.com"}
+            ]
+
+            let table = document.querySelector('#table')
+            let arrNew = arr.map((el, id) => {
+                return `<tr><td>${el.name}</td><td>${el.email}</td></tr>`
+            })
+            table.innerHTML += arrNew.join(" ")
+
+            // get the value from input 
+            let getInputVal = document.querySelector('#input')
+            getInputVal.addEventListener('keyup', (e) => {
+                let value = e.target.value.toLowerCase()
+                console.log(value)
+                let tr = document.getElementsByTagName('tr')
+                for (let i = 0; i < tr.length; i++) {
+                    let td = tr[i].getElementsByTagName('td')[0]
+                    if (td) {
+                        if (td.textContent.toLowerCase().includes(value)) {
+                            tr[i].style.display = ''
+                        }
+                        else {
+                            tr[i].style.display = 'none'
+                        }
+                    }
+                }
+            })
+        })()
+
+    </script>
+</body>
+
+</html>

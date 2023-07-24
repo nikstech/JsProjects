@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    .btn {
+        background-color: grey;
+        padding: 10px;
+    }
+    
+    .btn>button {
+        display: block;
+        margin-left: auto;
+        cursor: pointer;
+        border: 0;
+        border-radius: 50px;
+        font-size: 42px;
+        width: 50px;
+        box-shadow: 0px 0px 6px 4px #555;
+    }
+    
+    .main {
+        background-color: lightgray;
+        padding: 10px;
+        position: relative;
+    }
+    
+    .room {
+        background-color: orange;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 5px;
+        animation: newRow 0.5s ease-in-out;
+        transition: all 0.5s;
+        /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    }
+    
+    .room input {
+        width: 25%;
+        outline: none;
+        border-radius: 5px;
+        border: 0;
+        padding: 5px;
+    }
+    
+    .room .remove {
+        background-color: black;
+        color: #fff;
+        width: 15%;
+        border: 1px solid #000;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px 5px;
+    }
+    
+    @keyframes newRow {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+</style>
+
+<body>
+    <div class="btn">
+        <button id="btncl">+</button>
+    </div>
+    <div class="main" id="main">
+        <div class="room">
+            <span class="counter">1</span>
+            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Age" />
+            <input type="text" placeholder="Pan No" />
+            <button class="remove">Remove</button>
+        </div>
+    </div>
+    <script>
+        let btncl = document.getElementById("btncl");
+        let mainBox = document.getElementById("main");
+        let roomRow = document.querySelector(".room");
+        console.log(mainBox.length);
+        // creating  new el
+        btncl.addEventListener("click", () => {
+            let newEl = document.createElement("div");
+            newEl.setAttribute("class", "room");
+            newEl.innerHTML += roomRow.innerHTML;
+            mainBox.appendChild(newEl);
+            counter();
+            remove();
+
+            // try {
+            //     if (mainBox.length > 1) {
+            //         remove();
+            //     }
+            // } catch (err) {
+            //     console.log(err);
+            // }
+        });
+        const counter = () => {
+            let counter = document.querySelectorAll(".counter");
+            counter.forEach((el, id) => {
+                el.innerHTML = id + 1;
+            });
+        };
+
+        const remove = () => {
+            let removeRow = document.querySelectorAll(".remove");
+            removeRow.forEach((el, id) => {
+                el.addEventListener("click", function() {
+                    el.parentElement.remove();
+                });
+            });
+        };
+    </script>
+</body>
+
+</html>
