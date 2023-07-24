@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="ulParent">
+        <li class="liList">JAVA</li>
+        <li class="liList">HTML</li>
+        <li class="liList">CSS</li>
+        <li class="liList">JS</li>
+        <li class="liList">REACT</li>
+    </ul>
+    <script>
+
+        let ulData = document.querySelector('.ulParent');
+        let liData = ulData.children;
+        for (let i = 0; i < liData.length; i++) {
+            let res = liData[i].innerText;
+            console.log(res);
+        };
+    </script>
+</body>
+
+</html>
