@@ -1,0 +1,33 @@
+#center{
+    width: 700px;
+    height: 500px;
+    /* background-color: rgba(87, 138, 197, 0.315); */
+    position: relative;
+}
+.imageDiv{
+    position: absolute;
+    /* overflow: hidden; */
+    width: 100px;
+    height: 100px;
+    /* background-color: yellowgreen; */
+}
+.imageBox{
+    width: 100%;
+    height: 100%;
+    /* transform: translateY(-100px) rotate(5deg); */
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+    animation: imgAni 1s ease-in-out
+}
+
+@keyframes imgAni {
+    0%{
+        transform:translateY(0) rotate(0)
+    }
+    50%{
+        transform: translateY(-150%) rotate(3deg) scale(1.5)
+    }
+    100%{
+        transform: translateY(0) rotate(5deg)
+    }
+}
