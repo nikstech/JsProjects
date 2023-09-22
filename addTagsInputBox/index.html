@@ -21,7 +21,8 @@
     <div class="content">
       <p>Press enter or add a comma after each tag</p>
       <ul>
-        <input type="text" spellcheck="false">
+        <li class=""><i class="uit uit-multiply></i></li>
+        <input type="text">
       </ul>
     </div>
     <div class="details">
@@ -32,15 +33,20 @@
   <script>
     let input = document.querySelector('input')
     let tags = [];
-    function handleInput(e) {
+    const handleInput = (e) => {
         if(e.key == 'Enter'){ 
-          let li = document.createElement('li')
-          let i = document.createElement('i')
-          i.classList.add('uit', 'uit-multiply')
-          li.appendChild(i)
-          input.appendChild(li)
-          let tag = e.target.value.replace(/\s+/g, '')
-          
+          // let li = document.createElement('li')
+          // let i = document.createElement('i')
+          // i.classList.add('uit', 'uit-multiply')
+          // li.appendChild(i)
+          // input.appendChild(li)
+          let tag = e.target.value.replace(/\s+/g, '')  
+          if(tags.length>1 && !tags.includes(tag)){
+            tag.split(',').forEach(tag=>{
+              tags.push(tag)
+              console.log(tags)        
+            })
+          }
         }
     }
 
