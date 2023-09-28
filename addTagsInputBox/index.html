@@ -14,18 +14,13 @@
 
 <body>
   <div class="wrapper">
-    <div class="title">
-      <img src="tag.svg" alt="icon">
-      <h2>Tags</h2>
-    </div>
     <div class="content">
       <p>Press enter or add a comma after each tag</p>
       <div class="ulData">
-        <ul></ul><input type="text" placeholder="add tag" />
+        <ul><input type="text" placeholder="add tag" /></ul>
       </div>
     </div>
     <div class="details">
-      <p><span>10</span> tags are remaining</p>
       <button>Remove All</button>
     </div>
   </div>
@@ -33,44 +28,28 @@
     let ul = document.querySelector('ul')
     let input = document.querySelector('input')
     let tags = [];
-    let li;
-const remove = () => {
-     li.remove()
-}
 
+    let createTag = () => {
+      // ul.querySelectorAll('li').forEach(li => li.remove())
+      tags.forEach(liList => {
+        let liTag = `<li>${liList}<i class="uit uit-multiply"></i></li>`
+        ul.insertAdjacentHTML('afterbegin', liTag)
+      })
+      console.log(ul.length);
+    }
     const handleInput = (e) => {
-      // creating element 
       if (e.key == 'Enter') {
-         li = document.createElement('li')
-        let i = document.createElement('i')
-        i.classList.add('uit', 'uit-multiply')
-    
         // taking input from input box and pushing in list
-        let tag = e.target.value.replace(/\s+/g, '')    // Removing space bewteen strings/word
-        li.innerHTML += tag
-        li.appendChild(i)
-        ul.appendChild(li)
-        let iTag = document.querySelector('i')
-        iTag.setAttribute('onclick', 'remove()')        
-        e.target.value = ''
+        let tag = e.target.value.replace(/\s+/g, ' ')    // Removing space bewteen strings/word
+        if (tag.length > 1 && !tags.includes(tag)) {
+          tag.split(',').forEach(tag => {
+            tags.push(tag)
+            createTag()
+          })
+          e.target.value = ''
+        }
       }
     }
-    // if (tag.length > 1 && !tags.includes(tag)) {
-    //       tag.split(',').forEach(tag => {
-    //         tags.push(tag)
-    //         console.log(tags);
-    //         i.innerHTML = tag
-    //         // input.appendChild(li)
-
-    //         // tags.forEach(tag => {
-    //         //   ul.querySelectorAll('li').forEach(li=>li.remove())
-    //         //   let liTag = `<li>${tag}<i class="uit uit-multiply"></i></li>`
-    //         //   ul.insertAdjacentHTML('afterbegin', liTag)
-    //         //  })
-
-    //       })
-    //       // e.target.value = ''
-    //     }
     input.addEventListener('keyup', handleInput)
   </script>
 </body
