@@ -33,7 +33,7 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 270px;
+  width: 230px;
   background: #fff;
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
@@ -44,6 +44,7 @@ body {
 }
 .logo_items {
   gap: 8px;
+  position: relative;
 }
 .logo_name {
   font-size: 22px;
@@ -55,7 +56,7 @@ body {
 .sidebar.close #lock-icon,
 .sidebar.close #sidebar-close {
   opacity: 0;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 #lock-icon,
 #sidebar-close {
@@ -68,7 +69,21 @@ body {
 }
 #sidebar-close {
   display: none;
-  color: #333;
+  font-size: 40px;
+  right: -43px;
+  background: #fff;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  top: -15px;
+  box-shadow: 5px 2px 5px 0 #9e9e9ea8;
+  padding: 0;
+  color: #4070f4;
+}
+.sidebar.close #sidebar-close{
+  display: inline-block;
+  opacity: 0.8;
+    position: absolute;
+    right: -43px;
 }
 .menu_container {
   display: flex;
@@ -186,7 +201,6 @@ body {
   width: 40px;
   margin-left: 20px;
 }
-
 /* Responsive */
 @media screen and (max-width: 1100px) {
   .navbar {
