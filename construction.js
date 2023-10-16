@@ -5,9 +5,9 @@ function bankAccount(cName, balance = 0) {
         this.deposite = function (ammount) {
             this.currentBalance += ammount
         }
-    this.withdraw = function (amount) {
-        this.currentBalance -= amount
-    }
+        this.withdraw = function (amount) {
+            this.currentBalance -= amount
+        }
 }
 // =======================test console vauie ==========================
 // const NikleshAcc = new bankAccount("Niklesh",2000);
