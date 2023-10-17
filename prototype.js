@@ -1,20 +1,15 @@
 function bankAccount(cName, balance = 0) {
-    this.customerName = cName,
+        this.customerName = cName,
         this.accountNumber = Date.now(),
-        this.currentBalance = balance,
-        this.deposite = function (ammount) {
-            this.currentBalance += ammount
-        }
-        this.withdraw = function (amount) {
-            this.currentBalance -= amount
-        }
+        this.currentBalance = balance
 }
-// =======================test console value ==========================
-// const NikleshAcc = new bankAccount("Niklesh",2000);
-// NikleshAcc.deposite(4000)
-// NikleshAcc.withdraw(2000)
-// console.log(NikleshAcc);
+bankAccount.prototype.deposite = function (ammount) {
+    this.currentBalance += ammount
+}
 
+bankAccount.prototype.withdraw = function (amount) {
+    this.currentBalance -= amount
+}
 
 // ======================= taking value from html form ================================== 
 const accountForm = document.querySelector('#accountForm')
