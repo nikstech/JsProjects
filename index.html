@@ -1,27 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank mini app by using Oops Concepts</title>
-</head>
-<body>
-    <h2>Nik's Bank</h2>
-    <form id="accountForm">
-        <input type="text" placeholder="Customer Name" id="cName">
-        <input type="number" placeholder="Initiale Balance" id="cBalance">
-        <button type="submit">Create Account</button>
-    </form>
-    <hr>
-    <form id="depositeForm">
-        <input type="text" placeholder="Account Number" id="accNum">
-        <input type="number" placeholder="Balance" id="updateBal">
-        <button type="submit">Update Amount</button>
-    </form>
-    <!-- <script src="construction.js"></script> -->
-    <!-- <script src="prototype.js"></script> -->
-    <!-- <script src="classes.js"></script> -->
-    <!-- <script src="inheritance.js"></script> -->
-    <script src="encapsulation.js"></script>
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    /> -->
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="bootstrap-icons.css" /> -->
+
+    <!--Bootstrap 5 icons CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <title>CRUD Operations</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="p-3">
+      <div class="row">
+        <div class="col-12">
+          <button
+            class="btn btn-primary newUser"
+            data-bs-toggle="modal"
+            data-bs-target="#userForm"
+          >
+            New User <i class="bi bi-people"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table
+            class="table table-striped table-hover mt-3 text-center table-bordered"
+          >
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Post</th>
+                <!-- <th>Start Date</th> -->
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="data"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!--Modal Form-->
+    <div class="modal fade" id="userForm">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Fill the Form</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="#" id="myForm">
+              <div class="card imgholder">
+                <label for="imgInput" class="upload">
+                  <input type="file" name="" id="imgInput" />
+                  <i class="bi bi-plus-circle-dotted"></i>
+                </label>
+                <img
+                  src="./image/Profile Icon.webp"
+                  alt=""
+                  width="200"
+                  height="200"
+                  class="img"
+                />
+              </div>
+
+              <div class="inputField">
+                <div>
+                  <label for="name">Name:</label>
+                  <input type="text" name="" id="name" />
+                </div>
+                <div>
+                  <label for="age">Age:</label>
+                  <input type="number" value="32" name="" id="age" />
+                </div>
+                <div>
+                  <label for="city">City:</label>
+                  <input type="text" name="" id="city" />
+                </div>
+                <div>
+                  <label for="email">E-mail:</label>
+                  <input type="email" name="" id="email" />
+                </div>
+                <div>
+                  <label for="phone">Number:</label>
+                  <input
+                    type="text"
+                    name=""
+                    id="phone"
+                    minlength="11"
+                    maxlength="11"
+                  />
+                </div>
+                <div>
+                  <label for="post">Post:</label>
+                  <input type="text" name="" id="post" />
+                </div>
+                <!-- <div>
+                  <label for="sDate">Start Date:</label>
+                  <input type="date" name="" id="sDate"  />
+                </div> -->
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" form="myForm" class="btn btn-primary submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Read Data Modal-->
+    <div class="modal fade" id="readData">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Profile</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="#" id="myForm">
+              <div class="card imgholder">
+                <img
+                  src="./image/Profile Icon.webp"
+                  alt=""
+                  width="200"
+                  height="200"
+                  class="showImg"
+                />
+              </div>
+
+              <div class="inputField">
+                <div>
+                  <label for="name">Name:</label>
+                  <input type="text" name="" id="showName" disabled />
+                </div>
+                <div>
+                  <label for="age">Age:</label>
+                  <input type="number" name="" id="showAge" disabled />
+                </div>
+                <div>
+                  <label for="city">City:</label>
+                  <input type="text" name="" id="showCity" disabled />
+                </div>
+                <div>
+                  <label for="email">E-mail:</label>
+                  <input type="email" name="" id="showEmail" disabled />
+                </div>
+                <div>
+                  <label for="phone">Number:</label>
+                  <input
+                    type="text"
+                    name=""
+                    id="showPhone"
+                    minlength="11"
+                    maxlength="11"
+                    disabled
+                  />
+                </div>
+                <div>
+                  <label for="post">Post:</label>
+                  <input type="text" name="" id="showPost" disabled />
+                </div>
+                <!-- <div>
+                  <label for="sDate">Start Date:</label>
+                  <input type="date" name="" id="showsDate" disabled />
+                </div> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="app.js"></script>
+  </body>
 </html>
+
+<!-- https://www.youtube.com/watch?v=q7-xXuUczko&list=PLlcH2OeQ468ZuoB4_Cv0ONTc-iRPN4ZL1&index=2&t=1964s  -->
+<!-- https://www.youtube.com/watch?v=LbeXz6p7GGA&list=PLlcH2OeQ468ZuoB4_Cv0ONTc-iRPN4ZL1&index=2  -->
